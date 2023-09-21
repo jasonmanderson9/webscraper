@@ -14,4 +14,16 @@ for item in listing:
     address = item.find('div', class_='street-address').text
     city_state = item.find('div', class_='locality').text
     phone = item.find('div', class_='phones phone primary').text
-    print("Name: " + name + "\n" + "Address: " + address + "\n" + "City/State: " + city_state + "\n" + "Phone: " + phone + "\n")
+    try:
+        website = item.find('a', class_="track-visit-website")['href']
+    except:
+        website = ''
+
+    venue = {
+        'Name': name,
+        'Address': address,
+        'City/State': city_state,
+        'Phone': phone,
+        'Website': website
+    }
+    print(venue)
